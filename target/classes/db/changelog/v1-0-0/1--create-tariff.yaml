@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-tariff-table
+      author: Vlad
+      comment: "Create tariff table"
+      changes:
+        - createTable:
+            tableName: tariff
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: type
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: interest_rate
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false

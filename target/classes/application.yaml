@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/credit_processing_db
+    username: user
+    password: 1234
+#    url: jdbc:postgresql://${CREDITPROCESSING_DB_HOST}:${CREDITPROCESSING_DB_PORT}/${CREDITPROCESSING_DB_NAME}
+#    username: ${CREDITPROCESSING_DB_USERNAME}
+#    password: ${CREDITPROCESSING_DB_PASSWORD}
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml

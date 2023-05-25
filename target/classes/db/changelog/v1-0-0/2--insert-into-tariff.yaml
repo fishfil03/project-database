@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-into-tariff-table
+      author: Vlad
+      comment: "Insert initial data into tariff"
+      changes:
+        - insert:
+            tableName: tariff
+            columns:
+              - column:
+                  name: type
+                  value: "CONSUMER" # Потребительский
+              - column:
+                  name: interest_rate
+                  value: "11%"
+        - insert:
+            tableName: tariff
+            columns:
+              - column:
+                  name: type
+                  value: "MORTGAGE" # Ипотечный
+              - column:
+                  name: interest_rate
+                  value: "7%"
+        - insert:
+            tableName: tariff
+            columns:
+              - column:
+                  name: type
+                  value: "INTRABANK" # Внутрибанковский
+              - column:
+                  name: interest_rate
+                  value: "8%"
