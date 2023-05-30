@@ -16,9 +16,15 @@ class TariffProcessingApplicationTests {
         assertEquals(3, tariffs.length);
     }
 
-    @ParameterizedTest(name = "{index} - {0} is interest rate of the first tariff")
-    @ValueSource(strings = {"11%", "7%", "8%"})
-    public void IsFirstTariffInterestRateEqualsValue(String interestRate) {
+    @Test
+    public void IsFirstTariffInterestRateEquals11() {
+        var tariff = TariffService.getFirst();
+        assertEquals("11%", tariff.getInterestRate());
+    }
+
+    @ParameterizedTest(name = "{index} - {0} is not interest rate of the first tariff")
+    @ValueSource(strings = { "7%", "8%"})
+    public void IsFirstTariffInterestRateNotEqualsValue(String interestRate) {
         var tariff = TariffService.getFirst();
         assertEquals(interestRate, tariff.getInterestRate());
     }

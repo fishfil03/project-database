@@ -20,7 +20,7 @@ public class CreditService {
 
     public static long apply(long userId, Tariff tariff) {
         if (userId <= 0 || tariff == null) {
-            throw new IllegalArgumentException();
+            return 0;
         }
 
         Map<String, Object> map = new HashMap<>();
@@ -37,10 +37,7 @@ public class CreditService {
                         post("loan-service/order");
 
         if (response.getStatusCode() == 400) {
-            var error = HttpStatusCode.valueOf(400);
-            var message = response.body().jsonPath().get("error.message").toString();
-
-            throw new HttpClientErrorException(error, message);
+            return 0;
         }
 
         return response.body().jsonPath().getLong("data.orderId");
@@ -59,7 +56,7 @@ public class CreditService {
             var error = HttpStatusCode.valueOf(400);
             var message = response.body().jsonPath().get("error.message").toString();
 
-            throw new HttpClientErrorException(error, message);
+            return null;
         }
 
         var json = response.body().jsonPath().get("data.orderStatus");
